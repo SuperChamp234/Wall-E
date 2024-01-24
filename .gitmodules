@@ -1,7 +1,3 @@
-[submodule "components/sra-board-component"]
-	path = components/sra-board-component
-	url = git@github.com:SuperChamp234/sra-board-component.git
-	branch = final_component
 [submodule "8_self_balancing/components/websocket"]
 	path = 8_self_balancing/components/websocket
 	url = https://github.com/Molorius/esp32-websocket.git
