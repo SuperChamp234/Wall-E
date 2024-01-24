@@ -26,16 +26,16 @@ void websocket_callback(uint8_t num, WEBSOCKET_TYPE_t type, char *msg, uint64_t 
     switch (type)
     {
     case WEBSOCKET_CONNECT:
-        ESP_LOGI(TAG, "client %i connected!", num);
+        ESP_LOGI(TAG, "client %i connected!", (int)num);
         break;
     case WEBSOCKET_DISCONNECT_EXTERNAL:
-        ESP_LOGI(TAG, "client %i sent a disconnect message", num);
+        ESP_LOGI(TAG, "client %i sent a disconnect message",(int) num);
         break;
     case WEBSOCKET_DISCONNECT_INTERNAL:
-        ESP_LOGI(TAG, "client %i was disconnected", num);
+        ESP_LOGI(TAG, "client %i was disconnected", (int)num);
         break;
     case WEBSOCKET_DISCONNECT_ERROR:
-        ESP_LOGI(TAG, "client %i was disconnected due to an error", num);
+        ESP_LOGI(TAG, "client %i was disconnected due to an error", (int)num);
         break;
     case WEBSOCKET_TEXT:
         if (len)
@@ -71,13 +71,13 @@ void websocket_callback(uint8_t num, WEBSOCKET_TYPE_t type, char *msg, uint64_t 
         }
         break;
     case WEBSOCKET_BIN:
-        ESP_LOGI(TAG, "client %i sent binary message of size %i:\n%s", num, (uint32_t)len, msg);
+        ESP_LOGI(TAG, "client %i sent binary message of size %i:\n%s", (int)num, (int)len, msg);
         break;
     case WEBSOCKET_PING:
-        ESP_LOGI(TAG, "client %i pinged us with message of size %i:\n%s", num, (uint32_t)len, msg);
+        ESP_LOGI(TAG, "client %i pinged us with message of size %i:\n%s", (int)num, (int)len, msg);
         break;
     case WEBSOCKET_PONG:
-        ESP_LOGI(TAG, "client %i responded to the ping", num);
+        ESP_LOGI(TAG, "client %i responded to the ping", (int)num);
         break;
     }
 }

@@ -95,15 +95,30 @@ void balance_task(void *arg)
 
     // Clearing the screen
     lv_obj_clean(lv_scr_act());
+	ESP_ERROR_CHECK(self_balancing_display(40, read_pid_const().kp, read_pid_const().ki, read_pid_const().kd));
 #endif
 
 	// Ensure successful initialisation of MPU-6050
 	if (enable_mpu6050() == ESP_OK)
 	{
 		// Function to enable Motor driver A in Normal Mode
-		enable_motor_driver(a, NORMAL_MODE);
+		motor_handle_t motor_a_0;
+		motor_handle_t motor_a_1;
+		ESP_ERROR_CHECK(enable_motor_driver(&motor_a_0, MOTOR_A_0));
+		ESP_ERROR_CHECK(enable_motor_driver(&motor_a_1, MOTOR_A_1));
+		adc_handle_t battery_handle;
+		ESP_ERROR_CHECK(enable_line_sensor(&battery_handle));
+		int battery_sample = 0;
+		int bat_percent = battery_percent(battery_handle);
+
 		while (1)
 		{
+			battery_sample++;
+			if (battery_sample == 100)
+			{
+				battery_sample = 0;
+				bat_percent = battery_percent(battery_handle);
+			}
 			/**
 			 * read_mpu6050(euler_angle, mpu_offset) : Checking for successful calculation of complementary pitch 
 			 *											and roll angles based on intial accelerometer angle
@@ -125,27 +140,27 @@ void balance_task(void *arg)
 				if (pitch_error > 1)
 				{
 					// setting motor A0 with definite speed(duty cycle of motor driver PWM) in Backward direction
-					set_motor_speed(MOTOR_A_0, MOTOR_BACKWARD, motor_pwm);
+					set_motor_speed(motor_a_0, MOTOR_BACKWARD, motor_pwm);
 					// setting motor A1 with definite speed(duty cycle of motor driver PWM) in Backward direction
-					set_motor_speed(MOTOR_A_1, MOTOR_BACKWARD, motor_pwm);
+					set_motor_speed(motor_a_1, MOTOR_BACKWARD, motor_pwm);
 				}
 
 				// Bot tilts downwards
 				else if (pitch_error < -1)
 				{
 					// setting motor A0 with definite speed(duty cycle of motor driver PWM) in Forward direction
-					set_motor_speed(MOTOR_A_0, MOTOR_FORWARD, motor_pwm);
+					set_motor_speed(motor_a_0, MOTOR_FORWARD, motor_pwm);
 					// setting motor A1 with definite speed(duty cycle of motor driver PWM) in Forward direction
-					set_motor_speed(MOTOR_A_1, MOTOR_FORWARD, motor_pwm);
+					set_motor_speed(motor_a_1, MOTOR_FORWARD, motor_pwm);
 				}
 
 				// Bot remains in desired region for vertical balance
 				else
 				{
 					// stopping motor A0
-					set_motor_speed(MOTOR_A_0, MOTOR_STOP, 0);
+					set_motor_speed(motor_a_0, MOTOR_STOP, 0);
 					// stopping motor A1
-					set_motor_speed(MOTOR_A_1, MOTOR_STOP, 0);
+					set_motor_speed(motor_a_1, MOTOR_STOP, 0);
 				}
 
 				//ESP_LOGI("debug","left_duty_cycle:  %f    ::  right_duty_cycle :  %f  :: error :  %f  correction  :  %f  \n",left_duty_cycle, right_duty_cycle, error, correction);
@@ -153,11 +168,7 @@ void balance_task(void *arg)
 				// ESP_LOGI("debug", "Pitch: %0.2f", pitch_angle);
 #ifdef CONFIG_ENABLE_OLED
 				// Diplaying kp, ki, kd values on OLED
-				if (read_pid_const().val_changed)
-				{
-					display_pid_values(read_pid_const().kp, read_pid_const().ki, read_pid_const().kd);
-					reset_val_changed_pid_const();
-				}
+				ESP_ERROR_CHECK(self_balancing_display(bat_percent, read_pid_const().kp, read_pid_const().ki, read_pid_const().kd));
 #endif				
 				vTaskDelay(10 / portTICK_PERIOD_MS);
 			}
