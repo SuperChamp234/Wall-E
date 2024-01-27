@@ -3,5 +3,5 @@
 	url = https://github.com/Molorius/esp32-websocket.git
 [submodule "components/sra-board-component"]
 	path = components/sra-board-component
-	url = git@github.com:SuperChamp234/sra-board-component.git
+	url = https://github.com/SuperChamp234/sra-board-component
 	branch = final_component
