@@ -5,3 +5,7 @@
 	path = components/sra-board-component
 	url = https://github.com/SuperChamp234/sra-board-component
 	branch = final_component
+[submodule "idf_5_component_fork"]
+	path = components/sra-board-component
+	url = https://github.com/SuperChamp234/sra-board-component
+	branch = final_component
