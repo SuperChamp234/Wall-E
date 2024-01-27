@@ -34,19 +34,6 @@ float error=0, prev_error=0, difference, cumulative_error, correction;
  */
 line_sensor_array line_sensor_readings;
 
-
-void lsa_to_bar()
-{   
-    uint8_t var = 0x00;                     
-    bool number[8] = {0,0,0,0,0,0,0,0};
-    for(int i = 0; i < 5; i++)
-    {
-        number[7-i] = (line_sensor_readings.adc_reading[i] < BLACK_BOUNDARY) ? 0 : 1; //If adc value is less than black margin, then set that bit to 0 otherwise 1.
-        var = bool_to_uint8(number);  //A helper function to convert bool array to unsigned int.
-        ESP_ERROR_CHECK(set_bar_graph(var)); //Setting bar graph led with unsigned int value.
-    }
-}
-
 void calculate_correction()
 {
     error = error*10;  // we need the error correction in range 0-100 so that we can send it directly as duty cycle paramete
@@ -107,9 +94,14 @@ void calculate_error()
 
 void line_follow_task(void* arg)
 {
-    ESP_ERROR_CHECK(enable_motor_driver(a, NORMAL_MODE));
-    ESP_ERROR_CHECK(enable_line_sensor());
-    ESP_ERROR_CHECK(enable_bar_graph());
+    motor_handle_t motor_a_0;
+    motor_handle_t motor_a_1;
+    ESP_ERROR_CHECK(enable_motor_driver(&motor_a_0, MOTOR_A_0));
+    ESP_ERROR_CHECK(enable_motor_driver(&motor_a_1, MOTOR_A_1));
+    adc_handle_t line_sensor;
+    int battery_sample = 0;
+    ESP_ERROR_CHECK(enable_line_sensor(&line_sensor));
+    int bat_percent = battery_percent(line_sensor);
 #ifdef CONFIG_ENABLE_OLED
     // Initialising the OLED
     ESP_ERROR_CHECK(init_oled());
@@ -117,12 +109,18 @@ void line_follow_task(void* arg)
 
     // Clearing the screen
     lv_obj_clean(lv_scr_act());
-
 #endif
 
     while(true)
     {
-        line_sensor_readings = read_line_sensor();
+        battery_sample++;
+        if (battery_sample == 100)
+        {
+            battery_sample = 0;
+            bat_percent = battery_percent(line_sensor);
+        }
+
+        line_sensor_readings = read_line_sensor(line_sensor);
         for(int i = 0; i < 5; i++)
         {
             line_sensor_readings.adc_reading[i] = bound(line_sensor_readings.adc_reading[i], WHITE_MARGIN, BLACK_MARGIN);
@@ -132,24 +130,19 @@ void line_follow_task(void* arg)
 
         calculate_error();
         calculate_correction();
-        lsa_to_bar();
 
         left_duty_cycle = bound((optimum_duty_cycle + correction), lower_duty_cycle, higher_duty_cycle);
         right_duty_cycle = bound((optimum_duty_cycle - correction), lower_duty_cycle, higher_duty_cycle);
 
-        set_motor_speed(MOTOR_A_0, MOTOR_FORWARD, left_duty_cycle);
-        set_motor_speed(MOTOR_A_1, MOTOR_FORWARD, right_duty_cycle);
+        set_motor_speed(motor_a_0, MOTOR_FORWARD, left_duty_cycle);
+        set_motor_speed(motor_a_1, MOTOR_FORWARD, right_duty_cycle);
 
 
         //ESP_LOGI("debug","left_duty_cycle:  %f    ::  right_duty_cycle :  %f  :: error :  %f  correction  :  %f  \n",left_duty_cycle, right_duty_cycle, error, correction);
-        ESP_LOGI("debug", "KP: %f ::  KI: %f  :: KD: %f", read_pid_const().kp, read_pid_const().ki, read_pid_const().kd);
+        ESP_LOGI("debug", "KP: %f ::  KI: %f  :: KD: %f :: Battery: %d", read_pid_const().kp, read_pid_const().ki, read_pid_const().kd, read_adc(line_sensor, BATTERY));
 #ifdef CONFIG_ENABLE_OLED
-        // Diplaying kp, ki, kd values on OLED 
-        if (read_pid_const().val_changed)
-        {
-            display_pid_values(read_pid_const().kp, read_pid_const().ki, read_pid_const().kd);
-            reset_val_changed_pid_const();
-        }
+        // Diplaying battery voltage, kp, ki, kd and lsa readings on OLED
+        ESP_ERROR_CHECK(line_following_display(bat_percent, read_pid_const().kp, read_pid_const().ki, read_pid_const().kd, line_sensor_readings));
 #endif
 
         vTaskDelay(10 / portTICK_PERIOD_MS);

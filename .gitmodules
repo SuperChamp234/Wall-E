@@ -1,6 +1,11 @@
-[submodule "components/sra-board-component"]
-	path = components/sra-board-component
-	url = https://github.com/SRA-VJTI/sra-board-component.git
 [submodule "8_self_balancing/components/websocket"]
 	path = 8_self_balancing/components/websocket
 	url = https://github.com/Molorius/esp32-websocket.git
+[submodule "components/sra-board-component"]
+	path = components/sra-board-component
+	url = https://github.com/SuperChamp234/sra-board-component
+	branch = final_component
+[submodule "idf_5_component_fork"]
+	path = components/sra-board-component
+	url = https://github.com/SuperChamp234/sra-board-component
+	branch = final_component

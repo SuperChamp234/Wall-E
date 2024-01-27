@@ -1,4 +1,13 @@
 ### C ###
+
+#build files
+build/
+#sdkconfigs
+sdkconfig*
+
+#idf_ondemand_compponents
+managed_components/
+
 # Prerequisites
 *.d
 
