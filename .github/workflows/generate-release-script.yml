@@ -1,0 +1,35 @@
+name: Generate Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  generate_release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Set up environment
+      run: echo "TIMESTAMP=$(date -d '${{ github.event.head_commit.timestamp }}' +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
+    - name: Zip the repository
+      run: zip -r Wall-E.zip .
+
+    - name: Upload Release Asset
+      uses: softprops/action-gh-release@v0.1.15
+      with:
+        files: Wall-E.zip
+        tag_name: ${{ env.TIMESTAMP }}
+        name: Wall-E Release ${{ env.TIMESTAMP }}
+        body: This automated release contains the latest Wall-E source code with the submodules. It was triggered by following commit - ${{ github.event.head_commit.id }}
+        draft: false
+        prerelease: false
+
+permissions:
+  contents: write
