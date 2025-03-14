@@ -1,3 +1,8 @@
+---
+title: Wall-E
+description: Wall-E is a workshop that focuses on the concepts of line-following and self-balancing, using ESP32, a powerful micro-controller with features like inbuilt Wi-Fi support and BLE, with extensive application in several domains like IoT, RF, etc.
+---
+
 <p align="center">
   <img src="documentation/images/logo.png"/>
   
@@ -31,14 +36,13 @@
 </p>
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [About the Workshop](#about-the-workshop)
 - [Installation](#installation)
 - [Examples](#examples)
 - [Resources](#resources)
 - [Contribution](#contribution)
 - [License](#license)
-
-- [Acknowledgements](#acknowledgements)
 
 ## About the Workshop
 <p align="center">

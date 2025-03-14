@@ -1,3 +1,8 @@
+---
+title: Wall-E
+description: Wall-E is a workshop that focuses on the concepts of line-following and self-balancing, using ESP32, a powerful micro-controller with features like inbuilt Wi-Fi support and BLE, with extensive application in several domains like IoT, RF, etc.
+---
+
 <p align="center">
   <img src="documentation/images/logo.png"/>
   
@@ -31,14 +36,13 @@
 </p>
 
 ## Table of Contents
+- [Table of Contents](#table-of-contents)
 - [About the Workshop](#about-the-workshop)
 - [Installation](#installation)
 - [Examples](#examples)
 - [Resources](#resources)
 - [Contribution](#contribution)
 - [License](#license)
-
-- [Acknowledgements](#acknowledgements)
 
 ## About the Workshop
 <p align="center">
@@ -128,3 +132,21 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
+```{toctree}
+:maxdepth: 2
+:caption: Contents
+
+7_self_balancing/README
+5_PWM/README
+1_led_blink/README
+4_switch_controlled_motor_normal/README
+2_LSA/README
+3_MPU/README
+docs/source/7_self_balancing/README
+docs/source/5_PWM/README
+docs/source/README
+docs/source/1_led_blink/README
+docs/source/4_switch_controlled_motor_normal/README
+docs/source/2_LSA/README
+docs/source/3_MPU/README
+```
