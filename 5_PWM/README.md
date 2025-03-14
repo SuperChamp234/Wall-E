@@ -1,11 +1,17 @@
+---
+title: PWM
+---
+
 # TABLE OF CONTENTS
-* [Pulse Width Modulation](#pulse-width-modulation)
-  * [Duty Cycle](#duty-cycle)
-  * [Period](#period)
-* [Led Dimmer](#led-dimmer)
-* [PWM – For controlling speed](*pwm-for-controlling-speed)
-* [Motor Drivers](#motor-drivers)
-* [Description Of Functions Used](#description-of-functions-used)
+- [TABLE OF CONTENTS](#table-of-contents)
+- [Pulse Width Modulation](#pulse-width-modulation)
+  - [Duty Cycle](#duty-cycle)
+  - [Period](#period)
+- [PWM: Voltage Regulation](#pwm-voltage-regulation)
+- [LED Dimmer](#led-dimmer)
+- [PWM – For controlling speed](#pwm--for-controlling-speed)
+- [Motor Drivers](#motor-drivers)
+- [Description Of Functions Used](#description-of-functions-used)
 
 
 # Pulse Width Modulation

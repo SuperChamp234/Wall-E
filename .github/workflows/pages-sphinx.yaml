@@ -24,7 +24,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install sphinx myst-parser sphinx-rtd-theme
+          pip install sphinx myst-parser sphinx-rtd-theme pyyaml
 
       - name: Copy README.md Files to Docs
         run: |
@@ -32,17 +32,21 @@ jobs:
           find . -name "README.md" -exec cp --parents {} docs/source/ \;
           mv docs/source/README.md docs/source/index.md  # Root README becomes index
 
-      - name: Create Dynamic Toctree for Sidebar
+      - name: Create Dynamic Toctree for Sidebar Using YAML Titles
         run: |
-          echo "Generating toctree dynamically..."
+          echo "Generating toctree dynamically from YAML headers..."
           echo '```{toctree}' > docs/source/_auto_toctree.md
           echo ':maxdepth: 2' >> docs/source/_auto_toctree.md
           echo ':caption: Contents' >> docs/source/_auto_toctree.md
           echo '' >> docs/source/_auto_toctree.md
+
           find docs/source -name "README.md" | grep -v index.md | while read path; do
+            title=$(awk '/^---$/ {f++; next} f==1 && /^title:/ {sub(/^title: /, ""); print; exit}' "$path")
             relpath=$(realpath --relative-to=docs/source "$path")
-            echo "${relpath%.md}" >> docs/source/_auto_toctree.md
+            docpath="${relpath%.md}"
+            echo "${title} <${docpath}>" >> docs/source/_auto_toctree.md
           done
+
           echo '```' >> docs/source/_auto_toctree.md
           cat docs/source/_auto_toctree.md >> docs/source/index.md
 

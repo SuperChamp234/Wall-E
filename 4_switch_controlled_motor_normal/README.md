@@ -1,3 +1,7 @@
+---
+title: Switch Controlled Motor Normal
+---
+
 # switch_controlled_motor_normal
 ## About the Project
 - ### **Motor Driver Modes**
