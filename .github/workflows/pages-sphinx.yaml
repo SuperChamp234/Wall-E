@@ -32,6 +32,18 @@ jobs:
           find . -name "README.md" -exec cp --parents {} docs/source/ \;
           mv docs/source/README.md docs/source/index.md  # Root README becomes index
 
+      - name: Copy Centralized Assets
+        run: |
+          mkdir -p documentation/Assets
+          find . -type d -name assets | while read dir; do
+            modname=$(echo "$dir" | sed 's#\./##; s#/assets##; s#/#_#g')
+            for file in "$dir"/*; do
+              [ -f "$file" ] || continue
+              fname=$(basename "$file")
+              cp "$file" "documentation/Assets/${modname}_$fname"
+            done
+          done
+
       - name: Create Dynamic Toctree for Sidebar Using YAML Titles
         run: |
           echo "Generating toctree dynamically from YAML headers..."

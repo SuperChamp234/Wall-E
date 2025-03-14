@@ -2,24 +2,6 @@
 title: SELF BALANCING
 ---
 
-# SELF BALANCING
-
-## TABLE OF CONTENTS
-
-- [SELF BALANCING](#self-balancing)
-  - [TABLE OF CONTENTS](#table-of-contents)
-  - [How bot balance itself?](#how-bot-balance-itself)
-    - [Theory](#theory)
-    - [Use of PID](#use-of-pid)
-    - [Proportional Term](#proportional-term)
-    - [Derivative Term](#derivative-term)
-    - [Integral Term](#integral-term)
-  - [Formula for calculation of pitch correction](#formula-for-calculation-of-pitch-correction)
-  - [ALGORITHM](#algorithm)
-  - [Description of the functions](#description-of-the-functions)
-
-
-
 ## How bot balance itself?
 
 ### Theory

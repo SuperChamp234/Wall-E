@@ -1,32 +1,46 @@
 ---
-title: Switch Controlled Motor Normal
+title: Switch Controlled Motor (Normal Mode)
 ---
 
-# switch_controlled_motor_normal
+# Switch Controlled Motor (Normal Mode)
+
 ## About the Project
-- ### **Motor Driver Modes**
-    - The SRA board has 2x TB6612FNG motor drivers which allow a maximum of 4 motors to be controlled. This motor driver is characterized by its operation in two modes - **Normal mode** and **Parallel mode**, **switch_controlled_motor_normal** deals with normal mode approach:   
-        1. **Normal Mode**
-        <br />
-        <p align="center">
-        <img width="460" height="300" src="./normal_mode.jpeg">
-        </p>
 
-        -  As discussed earlier, the new design has two motor drivers. Each TB6612FNG can control two motors. Therefore, using two motor driver one can control 4 motors using 8 GPIO's of ESP32.
-        - E.g.: If pin 32 is HIGH(IN1 = HIGH) and pin 33 is low(IN2 = LOW) then motor 1 moves in the forward direction. 
-        - For motor 1 connected to TB 1:
-          |33\32|High|Low|
-          | -- | -- | -- |
-          |High| Move motor forward | Move Motor Forward |
-          |Low| Move motor Backward| Stop Motor |
-         The above table gives a clear idea about how the switch_motor_normal algorithm functions.
-        <br/><br/>
-        - So in normal mode, 4 motors can be connected to the board, with a per channel/motor current capacity of 1.2A.
+### Motor Driver Modes
 
-        <br/>
+The SRA board is equipped with two TB6612FNG motor drivers, enabling control of up to four motors. Each driver can independently operate two motors and supports two modes of operation: **Normal Mode** and **Parallel Mode**.
 
-- ### **Working**
-    - Activates GPIO swtiches to take input from LSA
-    - Activates one of the two TB6612FNG drivers
-    - takes input from LSA  
-    - runs the bot motors in Normal mode according to the input.
+This project focuses on the **Normal Mode** configuration.
+
+#### Normal Mode
+
+<p align="center">
+  <img width="460" height="300" src="./normal_mode.jpeg" alt="Normal Mode Motor Driver Configuration">
+</p>
+
+- Each TB6612FNG motor driver can control two motors, using two GPIO pins per motor (IN1 and IN2).
+- With two drivers, up to four motors can be controlled using eight GPIOs from the ESP32.
+- Example:
+  - If **IN1 = HIGH (Pin 32)** and **IN2 = LOW (Pin 33)**, Motor 1 moves forward.
+
+#### Motor Control Table
+
+| IN1 (Pin 32) | IN2 (Pin 33) | Motor Action         |
+|-------------|--------------|----------------------|
+| HIGH        | HIGH         | Move Motor Forward   |
+| HIGH        | LOW          | Move Motor Forward   |
+| LOW         | HIGH         | Move Motor Backward  |
+| LOW         | LOW          | Stop Motor           |
+
+> 📝 Note: The above table illustrates how the switch-controlled normal mode algorithm determines motor behavior based on GPIO states.
+
+- In **Normal Mode**, each motor channel can supply up to **1.2A current**, allowing full 4-motor control through the board.
+
+---
+
+## Working
+
+- Activates GPIO switches to receive input from the **Line Sensor Array (LSA)**.
+- Enables one of the two **TB6612FNG motor drivers**.
+- Uses LSA readings to determine motor behavior.
+- Drives the motors in **Normal Mode** based on LSA input logic.
