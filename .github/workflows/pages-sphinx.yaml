@@ -51,20 +51,19 @@ jobs:
       - name: Create Sphinx Config
         run: |
           cat << EOF > docs/source/conf.py
-import os
-project = 'Wall-E Docs'
-html_theme = 'sphinx_rtd_theme'
-extensions = ['myst_parser']
-source_suffix = ['.md']
-html_static_path = ['_static']
-templates_path = ['_templates']
-myst_enable_extensions = ['front_matter']
-html_theme_options = {
-    'collapse_navigation': False,
-    'titles_only': True
-}
-EOF
-
+          import os
+          project = 'Wall-E Docs'
+          html_theme = 'sphinx_rtd_theme'
+          extensions = ['myst_parser']
+          source_suffix = ['.md']
+          html_static_path = ['_static']
+          templates_path = ['_templates']
+          myst_enable_extensions = ['front_matter']
+          html_theme_options = {
+              'collapse_navigation': False,
+              'titles_only': True
+          }
+          EOF
       - name: Build Sphinx Documentation
         run: |
           sphinx-build -M html docs/source docs/build
