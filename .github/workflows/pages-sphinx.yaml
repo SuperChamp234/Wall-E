@@ -3,7 +3,7 @@ name: Build and Deploy Docs
 on:
   push:
     branches:
-      - '**' # Change to default branch later
+      - '**'  # Change this if your default branch is different
   workflow_dispatch:
 
 permissions:
@@ -46,6 +46,7 @@ jobs:
       - name: Build Sphinx Documentation
         run: |
           sphinx-build -M html docs/source docs/build
+          touch docs/build/html/.nojekyll  # Add .nojekyll after building
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
@@ -53,9 +54,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/build/html
           keep_files: true  # Keeps CNAME if it exists
-          #cname: 'walle.sravjti.in'  # Change if using a different domain
-
-      - name: Add .nojekyll to Bypass Jekyll Processing
-        run: |
-          touch docs/build/html/.nojekyll
-          git add docs/build/html/.nojekyll
+          cname: 'walle.sravjti.in'  # Change if using a different domain
