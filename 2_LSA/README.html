@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TABLE OF CONTENTS" href="../3_MPU/README.html" />
-    <link rel="prev" title="switch_controlled_motor_normal" href="../4_switch_controlled_motor_normal/README.html" /> 
+    <link rel="next" title="MPU6050" href="../3_MPU/README.html" />
+    <link rel="prev" title="Switch Controlled Motor (Normal Mode)" href="../4_switch_controlled_motor_normal/README.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,14 +44,16 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html">SELF BALANCING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html">TABLE OF CONTENTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#pulse-width-modulation">Pulse Width Modulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html">How bot balance itself?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#formula-for-calculation-of-pitch-correction">Formula for calculation of pitch correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#algorithm">ALGORITHM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#description-of-the-functions">Description of the functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html">Pulse Width Modulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#pwm-voltage-regulation">PWM: Voltage Regulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#led-dimmer">LED Dimmer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#pwm-for-controlling-speed">PWM – For controlling speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#pwm-for-speed-control">PWM for Speed Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#motor-drivers">Motor Drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#description-of-functions-used">Description Of Functions Used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#description-of-functions-used">Description of Functions Used</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_led_blink/README.html">LED BLINK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4_switch_controlled_motor_normal/README.html"> </a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">LSA - Light Sensor Array</a><ul>
@@ -65,18 +67,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#description-of-functions-used">Description of Functions Used</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html">TABLE OF CONTENTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html#mpu6050">MPU6050</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html#inertial-measurement-unit">Inertial Measurement Unit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html#initialising-mpu6050">Initialising MPU6050</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/7_self_balancing/README.html">SELF BALANCING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html">TABLE OF CONTENTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html#pulse-width-modulation">Pulse Width Modulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html">MPU6050 Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/7_self_balancing/README.html">How bot balance itself?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/7_self_balancing/README.html#formula-for-calculation-of-pitch-correction">Formula for calculation of pitch correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/7_self_balancing/README.html#algorithm">ALGORITHM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/7_self_balancing/README.html#description-of-the-functions">Description of the functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html">Pulse Width Modulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html#pwm-voltage-regulation">PWM: Voltage Regulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html#led-dimmer">LED Dimmer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html#pwm-for-controlling-speed">PWM – For controlling speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html#pwm-for-speed-control">PWM for Speed Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html#motor-drivers">Motor Drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html#description-of-functions-used">Description Of Functions Used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/5_PWM/README.html#description-of-functions-used">Description of Functions Used</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/README.html">Table of Contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/README.html#about-the-workshop">About the Workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/README.html#installation">Installation</a></li>
@@ -87,10 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/1_led_blink/README.html">LED BLINK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/4_switch_controlled_motor_normal/README.html"> </a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/2_LSA/README.html">LSA - Light Sensor Array</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/3_MPU/README.html">TABLE OF CONTENTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/3_MPU/README.html#mpu6050">MPU6050</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/3_MPU/README.html#inertial-measurement-unit">Inertial Measurement Unit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/3_MPU/README.html#initialising-mpu6050">Initialising MPU6050</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/3_MPU/README.html">MPU6050 Sensor</a></li>
 </ul>
 
         </div>
@@ -138,11 +136,11 @@
 </section>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The Light Sensor Array (LSA) is used to detect white/black-lined surfaces and sends this data to the ESP32 microcontroller. This enables line-following behavior.</p>
 <ul class="simple">
-<li><p>The Light Sensor Array(LSA) is used to detect the white/black lined surface and it sends this data to the microcontroller ESP32. Thus, the purpose of line following is achieved.</p></li>
-<li><p>Physical PCB
+<li><p><strong>Physical PCB</strong><br />
 <img src="assets/lsa_pcb.jpeg" width="800" height="450"></p></li>
-<li><p>PCB Model
+<li><p><strong>PCB Model</strong><br />
 <img src="assets/lsa_pcb_model.jpeg" width="800" height="400"></p></li>
 </ul>
 </section>
@@ -160,16 +158,16 @@
 <td><p>Emits light</p></td>
 <td><p>4</p></td>
 </tr>
-<tr class="row-odd"><td><p>PhotoDiode</p></td>
-<td><p>Absorbs light</p></td>
+<tr class="row-odd"><td><p>Photodiode</p></td>
+<td><p>Detects reflected light</p></td>
 <td><p>4</p></td>
 </tr>
 <tr class="row-even"><td><p>IC LM324</p></td>
-<td><p>Op.Amp. IC</p></td>
+<td><p>Quad Op-Amp IC</p></td>
 <td><p>1</p></td>
 </tr>
 <tr class="row-odd"><td><p>Resistors</p></td>
-<td><p>Limit Current</p></td>
+<td><p>Current limiting</p></td>
 <td><p>8</p></td>
 </tr>
 </tbody>
@@ -178,103 +176,61 @@
 <section id="function-of-components">
 <h2>Function of Components<a class="headerlink" href="#function-of-components" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>LED</p>
-<ul>
-<li><p>LSA consists of Four LED and PhotoDiode Pairs. The specific LED’s emit white light which is incident on the surface and some of it is absorbed by the surface. The voltage source For the LEDs to glow is VCC.</p></li>
-</ul>
-</li>
-<li><p>PhotoDiode</p>
-<ul>
-<li><p>Based upon the reflectivity coefficient of the surface( generally less than 1), the remaining light reflected from the surface is captured by the Photodiodes. LEDs and complimentary photodiodes are used to efficiently detect the surface (white/black line) as the environment also contains unwanted light for the LSA sensor. The amount of light received is directly proportional to the current generated by it. More the light, more the current, more the reading.</p></li>
-</ul>
-</li>
-<li><p>IC LM324</p>
-<ul>
-<li><p>This is a Quad(4) OP.Amp. IC. Op.Amp i.e Operation Amplifiers amplify the current with constant volatge. Since the current reading from photo diodes is significantly small and difficult to compare, it needs to be amplified. The 4 amplified outputs serve as raw readings of LSA.</p></li>
-</ul>
-</li>
-<li><p>Resistors</p>
-<ul>
-<li><p>Now to limit the current and thus to protect the LEDs, PhotoDiodes current limiting resistors are used.</p></li>
-</ul>
-</li>
+<li><p><strong>LED</strong><br />
+Four LED–photodiode pairs emit white light onto the surface. Some light is absorbed by the surface, and the rest is reflected. LEDs are powered by VCC.</p></li>
+<li><p><strong>Photodiode</strong><br />
+Reflected light (depending on the surface reflectivity) is captured by photodiodes. The current generated by a photodiode is proportional to the received light intensity. Higher light intensity → higher current → higher sensor reading.</p></li>
+<li><p><strong>IC LM324</strong><br />
+This quad operational amplifier IC amplifies the weak current signal from the photodiodes. The amplified signals serve as the raw LSA output readings.</p></li>
+<li><p><strong>Resistors</strong><br />
+Current-limiting resistors protect the LEDs and photodiodes by controlling current flow.</p></li>
 </ul>
 </section>
 <section id="working-principle">
 <h2>Working Principle<a class="headerlink" href="#working-principle" title="Link to this heading"></a></h2>
+<p>LSA works on the principle of varying reflectivity:</p>
 <ul class="simple">
-<li><p>LSA works on the principle of reflectivity of light for different types of surfaces.</p>
-<ul>
-<li><p>Black Surface -&gt; HIGH absorptivity -&gt; LESS reflectivity</p></li>
-<li><p>White Surface -&gt; LOW absorptivity -&gt; HIGH reflectivity</p></li>
-</ul>
-</li>
-<li><p>Demonstration
+<li><p><strong>Black surface → High absorptivity → Low reflectivity</strong></p></li>
+<li><p><strong>White surface → Low absorptivity → High reflectivity</strong></p></li>
+<li><p><strong>Demonstration:</strong><br />
 <img src="assets/lsa_reflectivity.gif" width="650" height="600"></p></li>
 </ul>
 </section>
 <section id="applications">
 <h2>Applications<a class="headerlink" href="#applications" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Application of LSA majorly lies in line following.</p></li>
+<li><p>Primary application: Line-following robots.</p></li>
 </ul>
 </section>
 <section id="scope-of-improvement">
 <h2>Scope of Improvement<a class="headerlink" href="#scope-of-improvement" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>LSA sometimes provides slightly inaccurate readings due to external light and conditions. Therefore, LSA has low accuracy. Hence LSA should be kept close to the ground.</p></li>
-<li><p>As of now only white and black surfaces are being mapped. Given accurate sensors and proper mapping we can map LSA for any range of RGB colours.</p></li>
+<li><p>Susceptible to external light, leading to inaccurate readings. Keeping the LSA close to the ground improves performance.</p></li>
+<li><p>Currently supports only black and white detection. With better calibration and sensors, LSA can be extended to detect a range of RGB colors.</p></li>
 </ul>
 </section>
 <section id="description-of-functions-used">
 <h2>Description of Functions Used<a class="headerlink" href="#description-of-functions-used" title="Link to this heading"></a></h2>
-<ul>
-<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">enable_line_sensor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span><span class="w">	</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">enable_line_sensor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Description</strong> : Enables and Configures the adc(Analog to Digital Converter).	.</p>
-<p><strong>Parameters</strong> :</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
-</ul>
-<p><strong>Returns</strong> : esp_err_t returns ESP_OK if adc is initialised properly, else it returns ESP_ERR_INVALID_ARG</p>
-</li>
-<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">bound</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w">	</span>
+<p><strong>Description:</strong> Enables and configures the ADC (Analog to Digital Converter).</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">ESP_OK</span></code> on success, <code class="docutils literal notranslate"><span class="pre">ESP_ERR_INVALID_ARG</span></code> on failure.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">bound</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">max</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Description</strong> : Bounds the given val within the range [min, max].</p>
-<p><strong>Parameters</strong> :</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code> : the value which needs to be bounded in the range [min, max].</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code> : the minimium limit value of the bounding range.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">max</span></code> : the maximum limit value of the bounding range.</p></li>
-</ul>
-<p><strong>Returns</strong> : the bounded value of val within the bounding range.</p>
-</li>
-<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">input_lower_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">input_higher_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">output_lower_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">output_higher_limit</span><span class="p">)</span><span class="w">	</span>
+<p><strong>Description:</strong> Bounds the value <code class="docutils literal notranslate"><span class="pre">val</span></code> within the range <code class="docutils literal notranslate"><span class="pre">[min,</span> <span class="pre">max]</span></code>.</p>
+<p><strong>Returns:</strong> The bounded value.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">float</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">input_lower_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">input_upper_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">output_lower_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">output_upper_limit</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Description</strong> : Maps the range [input_lower_limit, input_higher_limit] to  the range [output_lower_limit, output_higher_limit].</p>
-<p><strong>Parameters</strong> :</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code> : the value which needs to be mapped.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">input_lower_limit</span></code> : the minimium limit value of the input mapping range.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">input_lower_limit</span></code> : the maximum limit value of the input mapping range.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">output_lower_limit</span></code> : the minimium limit value of the output mapping range.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">output_lower_limit</span></code> : the maximum limit value of the output mapping range.</p></li>
-</ul>
-<p><strong>Returns</strong> : the mapped value of val lying within the output mapping range.</p>
-</li>
-<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">vTaskDelay</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xTicksToDelay</span><span class="p">)</span>
+<p><strong>Description:</strong> Maps <code class="docutils literal notranslate"><span class="pre">val</span></code> from the input range to a desired output range.</p>
+<p><strong>Returns:</strong> The mapped value.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="n">vTaskDelay</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xTicksToDelay</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Description</strong> : Delay a task for a given number of ticks.The constant portTICK_PERIOD_MS can be used to calculate real time from the tick rate - with the     resolution of one tick period.</p>
-<p><strong>Parameters</strong> :</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">xTicksToDelay</span></code> : The amount of time, in tick periods, that the calling task should block.</p></li>
-</ul>
-</li>
-</ul>
+<p><strong>Description:</strong> Delays a task for <code class="docutils literal notranslate"><span class="pre">xTicksToDelay</span></code> tick periods.</p>
+<p><strong>Parameters:</strong> <code class="docutils literal notranslate"><span class="pre">xTicksToDelay</span></code> — Number of tick periods to delay.</p>
 </section>
 </section>
 
@@ -282,8 +238,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../4_switch_controlled_motor_normal/README.html" class="btn btn-neutral float-left" title="switch_controlled_motor_normal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../3_MPU/README.html" class="btn btn-neutral float-right" title="TABLE OF CONTENTS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../4_switch_controlled_motor_normal/README.html" class="btn btn-neutral float-left" title="Switch Controlled Motor (Normal Mode)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../3_MPU/README.html" class="btn btn-neutral float-right" title="MPU6050" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -141,12 +141,12 @@ PWM <5_PWM/README>
 LED BLINK <1_led_blink/README>
  <4_switch_controlled_motor_normal/README>
 LSA - Light Sensor Array <2_LSA/README>
-MPU6050 <3_MPU/README>
+MPU6050 Sensor <3_MPU/README>
 SELF BALANCING <docs/source/7_self_balancing/README>
 PWM <docs/source/5_PWM/README>
 Wall-E <docs/source/README>
 LED BLINK <docs/source/1_led_blink/README>
  <docs/source/4_switch_controlled_motor_normal/README>
 LSA - Light Sensor Array <docs/source/2_LSA/README>
-MPU6050 <docs/source/3_MPU/README>
+MPU6050 Sensor <docs/source/3_MPU/README>
 ```

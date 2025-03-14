@@ -2,161 +2,146 @@
 title: PWM
 ---
 
-# TABLE OF CONTENTS
-- [TABLE OF CONTENTS](#table-of-contents)
-- [Pulse Width Modulation](#pulse-width-modulation)
-  - [Duty Cycle](#duty-cycle)
-  - [Period](#period)
-- [PWM: Voltage Regulation](#pwm-voltage-regulation)
-- [LED Dimmer](#led-dimmer)
-- [PWM – For controlling speed](#pwm--for-controlling-speed)
-- [Motor Drivers](#motor-drivers)
-- [Description Of Functions Used](#description-of-functions-used)
-
-
 # Pulse Width Modulation
 
-Pulse Width Modulation (PWM) is a square wave with varying low and high amplitude signal. A general PWM signal is given in a figure below:
+Pulse Width Modulation (PWM) is a square wave signal in which the duration of the high and low phases can be adjusted. It’s commonly used in embedded systems for controlling power to devices such as LEDs and motors.
 
-![](https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller1.png)
+A typical PWM signal looks like this:
 
+![PWM waveform](https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller1.png)
 
-There are various terms related with the Pulse Width Modulation:- 
-* **Off-Time** :- Duration of time period when the signal is low.
-* **ON-Time**  :- Duration of time period when the signal is high.
-* **Duty cycle** :- It is the percentage of the time period when the signal remains ON during the period of the pulse width modulation signal.
-* **Period** :- It is the sum of off-time and on-time of pulse width modulation signal.
+### Key Terms:
+- **ON-Time:** Duration when the signal is high.
+- **OFF-Time:** Duration when the signal is low.
+- **Duty Cycle:** Percentage of the total period during which the signal is high.
+- **Period:** Total time duration of one complete cycle (ON-Time + OFF-Time).
 
 ## Duty Cycle
 
-Calculation of duty cycle is done by calculating the ON-time from total period of time. It is a ratio between ON-time and total time period of the signal using period calculation, duty cycle is calculated as shown in the equation below:
+The duty cycle indicates how much of the time the PWM signal stays in the HIGH state during a cycle. It is calculated using:
 
-![](https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller2.png)
+![Duty Cycle Formula](https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller2.png)
 
-![](https://upload.wikimedia.org/wikipedia/commons/b/b8/Duty_Cycle_Examples.png)
+![Duty Cycle Examples](https://upload.wikimedia.org/wikipedia/commons/b/b8/Duty_Cycle_Examples.png)
 
-## Period 
-As represented in the above figure, Toff represents the off-time and Ton represents the on-time of a signal. Period is a sum of both on and off times and period is calculated as shown in the equation below:
+## Period
 
-![](https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller3.png)
+The period of a PWM signal is the sum of ON-Time (Ton) and OFF-Time (Toff):
 
+![Period Formula](https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller3.png)
 
 # PWM: Voltage Regulation
-PWM signals when operates at different duty cycle it gives a varying voltage at the output. Voltage regulation method is used in various areas of application like:
 
-* Audio
-* LED dimmers
-* Analog Signal Generation
-* Switching regulators
-* Motor Control
+By changing the duty cycle of a PWM signal, we can effectively regulate output voltage. This is widely used in:
 
-Voltage regulation operation is performed by averaging the PWM signal. Output voltage is calculated as shown in the equation below:
+- Audio signal modulation  
+- LED dimming  
+- Analog signal generation  
+- Switching regulators  
+- Motor speed control  
 
-![](https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller4.png)
+PWM voltage regulation works on the principle of averaging the PWM signal. The output voltage is proportional to the duty cycle:
+
+![Voltage Regulation Formula](https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller4.png)
 
 # LED Dimmer
 
-* LED Dimmer is the best example to visualise the working of the PWM
-* PWM technique (pulse width modulation) is a very efficient way of controlling the brightness of LEDs with minimum energy waste. I
-* Instead of varying the brightness by varying the supply current with a variable resistor or transistor it is accomplished by varying the ratio of ON time vs OFF time. This saves the lot of energy.
+PWM is an efficient technique to control LED brightness with minimal energy loss. Instead of wasting energy via resistors, brightness is modulated by varying the ON/OFF duration of the signal.
 
-![](https://exploreembedded.com/wiki/images/5/54/0_LPC1768_PWM.gif)
+- **More ON-time → Brighter LED**  
+- **More OFF-time → Dimmer LED**
 
-![](https://makeabilitylab.github.io/physcomp/esp32/assets/movies/Huzzah32_Fade-optimized.gif)
+![LED PWM Dimmer](https://exploreembedded.com/wiki/images/5/54/0_LPC1768_PWM.gif)  
+![LED Fade Effect](https://makeabilitylab.github.io/physcomp/esp32/assets/movies/Huzzah32_Fade-optimized.gif)
 
-# PWM – For controlling speed
+# PWM for Speed Control
 
-* The speed of a DC motor can be controlled by varying its input voltage, i.e. by using PWM.The higher the duty cycle, the greater the average voltage being applied to the dc motor(High Speed) and the lower the duty cycle, the less the average voltage being applied to the dc motor(Low Speed).
+PWM can be used to control the speed of DC motors by modulating the average voltage applied to the motor:
 
-* To control the speed of a d.c. motor we need a variable voltage d.c. power source. However if you take a 12v motor and switch on the power to it, the motor will start to speed up: motors do not respond immediately so it will take a small time to reach full speed. If we switch the power off sometime before the motor reaches full speed, then the motor will start to slow down. If we switch the power on and off quickly enough, the motor will run at some speed part way between zero and full speed. This is exactly what a p.w.m. controller does: it switches the motor on in a series of pulses. To control the motor speed it varies (modulates) the width of the pulses – hence Pulse Width Modulation.
+- **Higher Duty Cycle → Higher Average Voltage → Faster Motor Speed**
+- **Lower Duty Cycle → Lower Average Voltage → Slower Motor Speed**
+
+The motor doesn't respond instantaneously to voltage; hence, a properly tuned PWM signal gives you finer control over speed.
+
+A PWM controller switches power ON/OFF in rapid pulses. By adjusting the pulse width (duration of ON-Time), we effectively vary motor speed.
 
 # Motor Drivers
 
-Motor drivers acts as an interface between the motors and the control circuits. Motor require high amount of current whereas the controller circuit works on low current signals. So the function of motor drivers is to take a low-current control signal and then turn it into a higher-current signal that can drive a motor.
+Motor drivers act as power amplifiers. They take low-current signals from a controller and convert them into higher-current signals required to drive motors.
 
-The motor driver we will use in this workshop is TB6612FNG Motor driver
+The driver used in this workshop is **TB6612FNG** — a dual H-Bridge motor driver IC ideal for DC motors.
 
+# Description of Functions Used
 
-# Description Of Functions Used
+### `esp_err_t enable_motor_driver_a(int mode)`
 
-* ```c
-    esp_err_t enable_motor_driver_a(int mode)	
-    ```
-    **Description** : Enables Motor driver A in Parallel or Normal Mode.
+**Description:** Initializes Motor Driver A in either Parallel or Normal mode.
 
-    **Parameters** :
-    * `mode` : if mode = 1 is passed, motor driver is operated in parallel mode, if mode = 2 is passed, motor driver is operated in normal mode
+**Parameters:**
+- `mode`:  
+  - `1` = Parallel Mode  
+  - `2` = Normal Mode
 
-    **Returns** : esp_err_t returns ESP_OK if motor driver initialised properly, else it returns ESP_ERR_INVALID_ARG
+**Returns:**  
+- `ESP_OK` if initialization successful  
+- `ESP_ERR_INVALID_ARG` if an invalid mode is passed
 
-* ```c
-    esp_err_t enable_motor_driver_b(int mode)	
-    ```
-    **Description** : Enables Motor driver B in Parallel or Normal Mode.
+---
 
-    **Parameters** :
-    * `mode` : if mode = 1 is passed, motor driver is operated in parallel mode, if mode = 2 is passed, motor driver is operated in normal mode
+### `esp_err_t enable_motor_driver_b(int mode)`
 
-    **Returns** : esp_err_t returns ESP_OK if motor driver initialised properly, else it returns ESP_ERR_INVALID_ARG
+**Description:** Initializes Motor Driver B in either Parallel or Normal mode.
 
+**Parameters:**
+- `mode`:  
+  - `1` = Parallel Mode  
+  - `2` = Normal Mode
 
-* ```c
-    esp_err_t set_motor_speed (int 	motor_id,
-                               int 	direction,
-                               float duty_cycle )
-    ```
-    **Description** : Set the speed of motors.
+**Returns:**  
+- `ESP_OK` if initialization successful  
+- `ESP_ERR_INVALID_ARG` if an invalid mode is passed
 
-    **Parameters** :
-    * `motor_id` : set it as MOTOR_A_0, MOTOR_A_1, MOTOR_B_0, MOTOR_B_1 to select the appropriate motor to set its speed and direction
+---
 
-    *  `direction` : set is as MOTOR_FORWARD for forward motion, MOTOR_BACKWARD for backward motion, MOTOR_STOP to stop the motor
+### `esp_err_t set_motor_speed(int motor_id, int direction, float duty_cycle)`
 
-    * `duty_cycle` : set the duty cycle of the motor driver PWM
+**Description:** Sets the speed and direction of the motor.
 
-    **Returns** : esp_err_t returns ESP_OK if speed correctly, ESP_FAIL if any error occurs
+**Parameters:**
+- `motor_id`: Use one of the following: `MOTOR_A_0`, `MOTOR_A_1`, `MOTOR_B_0`, `MOTOR_B_1`
+- `direction`: Use one of the following:
+  - `MOTOR_FORWARD`  
+  - `MOTOR_BACKWARD`  
+  - `MOTOR_STOP`
+- `duty_cycle`: Duty cycle to be applied via PWM
 
-* ```c 
-    void vTaskDelay(const TickType_t xTicksToDelay)
-  ```
+**Returns:**  
+- `ESP_OK` on success  
+- `ESP_FAIL` on error
 
-  **Description** : Delay a task for a given number of ticks.The constant portTICK_PERIOD_MS can be used to calculate real time from the tick rate - with the resolution of one tick period.
+---
 
-  **Parameters** : 
-  * `xTicksToDelay` : The amount of time, in tick periods, that the calling task should block.
+### `void vTaskDelay(const TickType_t xTicksToDelay)`
 
-* ```c 
-    static BaseType_t xTaskCreate(TaskFunction_t pvTaskCode, 
-                                  const char *constpcName, 
-                                  const uint32_t usStackDepth, 
-                                  void *constpvParameters, 
-                                  UBaseType_t uxPriority, 
-                                  TaskHandle_t *constpvCreatedTask)
-  ```
+**Description:** Delays a task for a specified number of ticks. You can convert real-time delay using `portTICK_PERIOD_MS`.
 
-  **Description** : Create a new task and add it to the list of tasks that are ready to run.
+**Parameters:**
+- `xTicksToDelay`: Number of ticks to delay execution.
 
-  **Parameters** : 
-  * `pvTaskCode`: Pointer to the task entry function. Tasks must be implemented to never return (i.e. continuous loop), or should be terminated using vTaskDelete function.
+---
 
-  * `pcName`: A descriptive name for the task. This is mainly used to facilitate debugging. Max length defined by configMAX_TASK_NAME_LEN - default is 16.
+### `static BaseType_t xTaskCreate(TaskFunction_t pvTaskCode, const char *const pcName, uint32_t usStackDepth, void *const pvParameters, UBaseType_t uxPriority, TaskHandle_t *const pvCreatedTask)`
 
-  * `usStackDepth` : The size of the task stack specified as the number of bytes. Note that this differs from vanilla FreeRTOS.
+**Description:** Creates a new FreeRTOS task.
 
-  * `pvParameters`: Pointer that will be used as the parameter for the task being created.
+**Parameters:**
+- `pvTaskCode`: Function pointer to the task logic (must not return)
+- `pcName`: Descriptive name (max length defined by `configMAX_TASK_NAME_LEN`)
+- `usStackDepth`: Stack size in bytes
+- `pvParameters`: Pointer to parameters passed to the task
+- `uxPriority`: Priority of the task (add `portPRIVILEGE_BIT` for privileged tasks)
+- `pvCreatedTask`: Pointer to store the handle of the created task
 
-  * `uxPriority` : The priority at which the task should run. Systems that include MPU support can optionally create tasks in a privileged (system) mode by setting bit portPRIVILEGE_BIT of the priority parameter. For example, to create a privileged task at priority 2 the uxPriority parameter should be set to ( 2 | portPRIVILEGE_BIT ).
-
-  * `pvCreatedTask`: Used to pass back a handle by which the created task can be referenced.
-
-  **Returns** : pdPASS if the task was successfully created and added to a ready list, otherwise an error code defined in the file projdefs.h
-
-
-
-
-
-
-
-
-
-
+**Returns:**  
+- `pdPASS` on success  
+- Error code from `projdefs.h` otherwise

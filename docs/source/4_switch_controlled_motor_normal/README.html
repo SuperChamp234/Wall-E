@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>switch_controlled_motor_normal &mdash; Wall-E Docs  documentation</title>
+  <title>Switch Controlled Motor (Normal Mode) &mdash; Wall-E Docs  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
@@ -44,29 +44,30 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../../7_self_balancing/README.html">SELF BALANCING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html">TABLE OF CONTENTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html#pulse-width-modulation">Pulse Width Modulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_self_balancing/README.html">How bot balance itself?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_self_balancing/README.html#formula-for-calculation-of-pitch-correction">Formula for calculation of pitch correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_self_balancing/README.html#algorithm">ALGORITHM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_self_balancing/README.html#description-of-the-functions">Description of the functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html">Pulse Width Modulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html#pwm-voltage-regulation">PWM: Voltage Regulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html#led-dimmer">LED Dimmer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html#pwm-for-controlling-speed">PWM – For controlling speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html#pwm-for-speed-control">PWM for Speed Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html#motor-drivers">Motor Drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html#description-of-functions-used">Description Of Functions Used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_PWM/README.html#description-of-functions-used">Description of Functions Used</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../1_led_blink/README.html">LED BLINK</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../4_switch_controlled_motor_normal/README.html"> </a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../2_LSA/README.html">LSA - Light Sensor Array</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../3_MPU/README.html">TABLE OF CONTENTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../3_MPU/README.html#mpu6050">MPU6050</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../3_MPU/README.html#inertial-measurement-unit">Inertial Measurement Unit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../3_MPU/README.html#initialising-mpu6050">Initialising MPU6050</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html">SELF BALANCING</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html">TABLE OF CONTENTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#pulse-width-modulation">Pulse Width Modulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_MPU/README.html">MPU6050 Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html">How bot balance itself?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#formula-for-calculation-of-pitch-correction">Formula for calculation of pitch correction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#algorithm">ALGORITHM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#description-of-the-functions">Description of the functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html">Pulse Width Modulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#pwm-voltage-regulation">PWM: Voltage Regulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#led-dimmer">LED Dimmer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#pwm-for-controlling-speed">PWM – For controlling speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#pwm-for-speed-control">PWM for Speed Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#motor-drivers">Motor Drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#description-of-functions-used">Description Of Functions Used</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_PWM/README.html#description-of-functions-used">Description of Functions Used</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../README.html">Table of Contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../README.html#about-the-workshop">About the Workshop</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../README.html#installation">Installation</a></li>
@@ -76,14 +77,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_led_blink/README.html">LED BLINK</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#"> </a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#about-the-project">About the Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#about-the-project">About the Project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#motor-driver-modes">Motor Driver Modes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#normal-mode">Normal Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#motor-control-table">Motor Control Table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#working">Working</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../2_LSA/README.html">LSA - Light Sensor Array</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html">TABLE OF CONTENTS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html#mpu6050">MPU6050</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html#inertial-measurement-unit">Inertial Measurement Unit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html#initialising-mpu6050">Initialising MPU6050</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html">MPU6050 Sensor</a></li>
 </ul>
 
         </div>
@@ -100,7 +106,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">switch_controlled_motor_normal</li>
+      <li class="breadcrumb-item active">Switch Controlled Motor (Normal Mode)</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/docs/source/4_switch_controlled_motor_normal/README.md.txt" rel="nofollow"> View page source</a>
       </li>
@@ -110,62 +116,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="switch-controlled-motor-normal">
-<h1>switch_controlled_motor_normal<a class="headerlink" href="#switch-controlled-motor-normal" title="Link to this heading"></a></h1>
+  <section id="switch-controlled-motor-normal-mode">
+<h1>Switch Controlled Motor (Normal Mode)<a class="headerlink" href="#switch-controlled-motor-normal-mode" title="Link to this heading"></a></h1>
 <section id="about-the-project">
 <h2>About the Project<a class="headerlink" href="#about-the-project" title="Link to this heading"></a></h2>
+<section id="motor-driver-modes">
+<h3>Motor Driver Modes<a class="headerlink" href="#motor-driver-modes" title="Link to this heading"></a></h3>
+<p>The SRA board is equipped with two TB6612FNG motor drivers, enabling control of up to four motors. Each driver can independently operate two motors and supports two modes of operation: <strong>Normal Mode</strong> and <strong>Parallel Mode</strong>.</p>
+<p>This project focuses on the <strong>Normal Mode</strong> configuration.</p>
+<section id="normal-mode">
+<h4>Normal Mode<a class="headerlink" href="#normal-mode" title="Link to this heading"></a></h4>
+<p align="center">
+  <img width="460" height="300" src="./normal_mode.jpeg" alt="Normal Mode Motor Driver Configuration">
+</p>
+<ul class="simple">
+<li><p>Each TB6612FNG motor driver can control two motors, using two GPIO pins per motor (IN1 and IN2).</p></li>
+<li><p>With two drivers, up to four motors can be controlled using eight GPIOs from the ESP32.</p></li>
+<li><p>Example:</p>
 <ul>
-<li><p class="rubric" id="motor-driver-modes"><strong>Motor Driver Modes</strong></p>
-<ul>
-<li><p>The SRA board has 2x TB6612FNG motor drivers which allow a maximum of 4 motors to be controlled. This motor driver is characterized by its operation in two modes - <strong>Normal mode</strong> and <strong>Parallel mode</strong>, <strong>switch_controlled_motor_normal</strong> deals with normal mode approach:</p>
-<ol class="arabic simple">
-<li><p><strong>Normal Mode</strong>
-<br /></p></li>
-</ol>
-  <p align="center">
-  <img width="460" height="300" src="./normal_mode.jpeg">
-  </p>
-<ul>
-<li><p>As discussed earlier, the new design has two motor drivers. Each TB6612FNG can control two motors. Therefore, using two motor driver one can control 4 motors using 8 GPIO’s of ESP32.</p></li>
-<li><p>E.g.: If pin 32 is HIGH(IN1 = HIGH) and pin 33 is low(IN2 = LOW) then motor 1 moves in the forward direction.</p></li>
-<li><p>For motor 1 connected to TB 1:</p>
+<li><p>If <strong>IN1 = HIGH (Pin 32)</strong> and <strong>IN2 = LOW (Pin 33)</strong>, Motor 1 moves forward.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="motor-control-table">
+<h4>Motor Control Table<a class="headerlink" href="#motor-control-table" title="Link to this heading"></a></h4>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>33\32</p></th>
-<th class="head"><p>High</p></th>
-<th class="head"><p>Low</p></th>
+<tr class="row-odd"><th class="head"><p>IN1 (Pin 32)</p></th>
+<th class="head"><p>IN2 (Pin 33)</p></th>
+<th class="head"><p>Motor Action</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>High</p></td>
-<td><p>Move motor forward</p></td>
+<tr class="row-even"><td><p>HIGH</p></td>
+<td><p>HIGH</p></td>
 <td><p>Move Motor Forward</p></td>
 </tr>
-<tr class="row-odd"><td><p>Low</p></td>
-<td><p>Move motor Backward</p></td>
+<tr class="row-odd"><td><p>HIGH</p></td>
+<td><p>LOW</p></td>
+<td><p>Move Motor Forward</p></td>
+</tr>
+<tr class="row-even"><td><p>LOW</p></td>
+<td><p>HIGH</p></td>
+<td><p>Move Motor Backward</p></td>
+</tr>
+<tr class="row-odd"><td><p>LOW</p></td>
+<td><p>LOW</p></td>
 <td><p>Stop Motor</p></td>
 </tr>
 </tbody>
 </table>
-</li>
-</ul>
-<p>The above table gives a clear idea about how the switch_motor_normal algorithm functions.
-<br/><br/></p>
+<blockquote>
+<div><p>📝 Note: The above table illustrates how the switch-controlled normal mode algorithm determines motor behavior based on GPIO states.</p>
+</div></blockquote>
 <ul class="simple">
-<li><p>So in normal mode, 4 motors can be connected to the board, with a per channel/motor current capacity of 1.2A.</p></li>
+<li><p>In <strong>Normal Mode</strong>, each motor channel can supply up to <strong>1.2A current</strong>, allowing full 4-motor control through the board.</p></li>
 </ul>
-  <br/>
-</li>
-</ul>
-</li>
-<li><p class="rubric" id="working"><strong>Working</strong></p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="working">
+<h2>Working<a class="headerlink" href="#working" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Activates GPIO swtiches to take input from LSA</p></li>
-<li><p>Activates one of the two TB6612FNG drivers</p></li>
-<li><p>takes input from LSA</p></li>
-<li><p>runs the bot motors in Normal mode according to the input.</p></li>
-</ul>
-</li>
+<li><p>Activates GPIO switches to receive input from the <strong>Line Sensor Array (LSA)</strong>.</p></li>
+<li><p>Enables one of the two <strong>TB6612FNG motor drivers</strong>.</p></li>
+<li><p>Uses LSA readings to determine motor behavior.</p></li>
+<li><p>Drives the motors in <strong>Normal Mode</strong> based on LSA input logic.</p></li>
 </ul>
 </section>
 </section>
