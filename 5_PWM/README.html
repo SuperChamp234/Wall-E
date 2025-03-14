@@ -42,34 +42,21 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html">How bot balance itself?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#formula-for-calculation-of-pitch-correction">Formula for calculation of pitch correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#algorithm">ALGORITHM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../7_self_balancing/README.html#description-of-the-functions">Description of the functions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Pulse Width Modulation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#key-terms">Key Terms:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#duty-cycle">Duty Cycle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#period">Period</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Pulse Width Modulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#pwm-voltage-regulation">PWM: Voltage Regulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#led-dimmer">LED Dimmer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#pwm-for-speed-control">PWM for Speed Control</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#motor-drivers">Motor Drivers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#description-of-functions-used">Description of Functions Used</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#esp-err-t-enable-motor-driver-a-int-mode"><code class="docutils literal notranslate"><span class="pre">esp_err_t</span> <span class="pre">enable_motor_driver_a(int</span> <span class="pre">mode)</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#esp-err-t-enable-motor-driver-b-int-mode"><code class="docutils literal notranslate"><span class="pre">esp_err_t</span> <span class="pre">enable_motor_driver_b(int</span> <span class="pre">mode)</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#esp-err-t-set-motor-speed-int-motor-id-int-direction-float-duty-cycle"><code class="docutils literal notranslate"><span class="pre">esp_err_t</span> <span class="pre">set_motor_speed(int</span> <span class="pre">motor_id,</span> <span class="pre">int</span> <span class="pre">direction,</span> <span class="pre">float</span> <span class="pre">duty_cycle)</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#void-vtaskdelay-const-ticktype-t-xtickstodelay"><code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">vTaskDelay(const</span> <span class="pre">TickType_t</span> <span class="pre">xTicksToDelay)</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#static-basetype-t-xtaskcreate-taskfunction-t-pvtaskcode-const-char-const-pcname-uint32-t-usstackdepth-void-const-pvparameters-ubasetype-t-uxpriority-taskhandle-t-const-pvcreatedtask"><code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">BaseType_t</span> <span class="pre">xTaskCreate(TaskFunction_t</span> <span class="pre">pvTaskCode,</span> <span class="pre">const</span> <span class="pre">char</span> <span class="pre">*const</span> <span class="pre">pcName,</span> <span class="pre">uint32_t</span> <span class="pre">usStackDepth,</span> <span class="pre">void</span> <span class="pre">*const</span> <span class="pre">pvParameters,</span> <span class="pre">UBaseType_t</span> <span class="pre">uxPriority,</span> <span class="pre">TaskHandle_t</span> <span class="pre">*const</span> <span class="pre">pvCreatedTask)</span></code></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="#description-of-functions-used">Description of Functions Used</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1_led_blink/README.html">LED BLINK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4_switch_controlled_motor_normal/README.html"> </a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_switch_controlled_motor_normal/README.html">Switch Controlled Motor (Normal Mode)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2_LSA/README.html">LSA - Light Sensor Array</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html">MPU6050 Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_MPU/README.html">MPU6050</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/7_self_balancing/README.html">How bot balance itself?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/7_self_balancing/README.html#formula-for-calculation-of-pitch-correction">Formula for calculation of pitch correction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/7_self_balancing/README.html#algorithm">ALGORITHM</a></li>
@@ -88,9 +75,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/README.html#contribution">Contribution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/README.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/1_led_blink/README.html">LED BLINK</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/4_switch_controlled_motor_normal/README.html"> </a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/4_switch_controlled_motor_normal/README.html">Switch Controlled Motor (Normal Mode)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docs/source/2_LSA/README.html">LSA - Light Sensor Array</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../docs/source/3_MPU/README.html">MPU6050 Sensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docs/source/3_MPU/README.html">MPU6050</a></li>
 </ul>
 
         </div>
