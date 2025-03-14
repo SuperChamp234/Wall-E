@@ -30,33 +30,19 @@ jobs:
         run: |
           mkdir -p docs/source
           find . -name "README.md" -exec cp --parents {} docs/source/ \;
-          mv docs/source/README.md docs/source/index.md  # Root README becomes index
+          mv docs/source/README.md docs/source/index.md
 
-      - name: Copy Centralized Assets
+      - name: Create Static TOC for Sidebar (filenames only)
         run: |
-          mkdir -p documentation/Assets
-          find . -type d -name assets | while read dir; do
-            modname=$(echo "$dir" | sed 's#\./##; s#/assets##; s#/#_#g')
-            for file in "$dir"/*; do
-              [ -f "$file" ] || continue
-              fname=$(basename "$file")
-              cp "$file" "documentation/Assets/${modname}_$fname"
-            done
-          done
-
-      - name: Create Dynamic Toctree for Sidebar Using YAML Titles
-        run: |
-          echo "Generating toctree dynamically from YAML headers..."
           echo '```{toctree}' > docs/source/_auto_toctree.md
-          echo ':maxdepth: 2' >> docs/source/_auto_toctree.md
-          echo ':caption: Contents' >> docs/source/_auto_toctree.md
+          echo ':maxdepth: 1' >> docs/source/_auto_toctree.md
+          echo ':titlesonly:' >> docs/source/_auto_toctree.md
           echo '' >> docs/source/_auto_toctree.md
 
           find docs/source -name "README.md" | grep -v index.md | while read path; do
-            title=$(awk '/^---$/ {f++; next} f==1 && /^title:/ {sub(/^title: /, ""); print; exit}' "$path")
             relpath=$(realpath --relative-to=docs/source "$path")
             docpath="${relpath%.md}"
-            echo "${title} <${docpath}>" >> docs/source/_auto_toctree.md
+            echo "$docpath" >> docs/source/_auto_toctree.md
           done
 
           echo '```' >> docs/source/_auto_toctree.md
@@ -65,24 +51,28 @@ jobs:
       - name: Create Sphinx Config
         run: |
           cat << EOF > docs/source/conf.py
-          import os
-          project = 'Wall-E Docs'
-          html_theme = 'sphinx_rtd_theme'
-          extensions = ['myst_parser']
-          source_suffix = ['.md']
-          html_static_path = ['_static']
-          templates_path = ['_templates']
-          EOF
+import os
+project = 'Wall-E Docs'
+html_theme = 'sphinx_rtd_theme'
+extensions = ['myst_parser']
+source_suffix = ['.md']
+html_static_path = ['_static']
+templates_path = ['_templates']
+myst_enable_extensions = ['front_matter']
+html_theme_options = {
+    'collapse_navigation': False,
+    'titles_only': True
+}
+EOF
 
       - name: Build Sphinx Documentation
         run: |
           sphinx-build -M html docs/source docs/build
-          touch docs/build/html/.nojekyll  # Add .nojekyll after building
+          touch docs/build/html/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/build/html
-          keep_files: true  # Keeps CNAME if it exists
-          #cname: 'walle.sravjti.in'  # Change if using a different domain
+          keep_files: true
