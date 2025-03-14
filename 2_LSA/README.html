@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LSA - Light Sensor Array &mdash; Wall-E Docs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Wall-E Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">LSA - Light Sensor Array</a><ul>
+<li><a class="reference internal" href="#table-of-contents">Table of Contents</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#components-of-lsa">Components of LSA</a></li>
+<li><a class="reference internal" href="#function-of-components">Function of Components</a></li>
+<li><a class="reference internal" href="#working-principle">Working Principle</a></li>
+<li><a class="reference internal" href="#applications">Applications</a></li>
+<li><a class="reference internal" href="#scope-of-improvement">Scope of Improvement</a></li>
+<li><a class="reference internal" href="#description-of-functions-used">Description of Functions Used</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wall-E Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">LSA - Light Sensor Array</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/2_LSA/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lsa-light-sensor-array">
+<h1>LSA - Light Sensor Array<a class="headerlink" href="#lsa-light-sensor-array" title="Link to this heading"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview"><span class="xref myst">Overview</span></a></p></li>
+<li><p><a class="reference internal" href="#components-of-lsa"><span class="xref myst">Components of LSA</span></a></p></li>
+<li><p><a class="reference internal" href="#function-of-components"><span class="xref myst">Function of Components</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#function-of-components"><span class="xref myst">LED</span></a></p></li>
+<li><p><a class="reference internal" href="#function-of-components"><span class="xref myst">PhotoDiode</span></a></p></li>
+<li><p><a class="reference internal" href="#function-of-components"><span class="xref myst">IC LM324</span></a></p></li>
+<li><p><a class="reference internal" href="#function-of-components"><span class="xref myst">Resistors</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#working-principle"><span class="xref myst">Working Principle</span></a></p></li>
+<li><p><a class="reference internal" href="#applications"><span class="xref myst">Appplications</span></a></p></li>
+<li><p><a class="reference internal" href="#scope-of-improvement"><span class="xref myst">Scope of Improvement</span></a></p></li>
+<li><p><a class="reference internal" href="#description-of-functions-used"><span class="xref myst">Description of Functions Used</span></a></p></li>
+</ul>
+</section>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The Light Sensor Array(LSA) is used to detect the white/black lined surface and it sends this data to the microcontroller ESP32. Thus, the purpose of line following is achieved.</p></li>
+<li><p>Physical PCB
+<img src="assets/lsa_pcb.jpeg" width="800" height="450"></p></li>
+<li><p>PCB Model
+<img src="assets/lsa_pcb_model.jpeg" width="800" height="400"></p></li>
+</ul>
+</section>
+<section id="components-of-lsa">
+<h2>Components of LSA<a class="headerlink" href="#components-of-lsa" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Quantity</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LED</p></td>
+<td><p>Emits light</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p>PhotoDiode</p></td>
+<td><p>Absorbs light</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>IC LM324</p></td>
+<td><p>Op.Amp. IC</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Resistors</p></td>
+<td><p>Limit Current</p></td>
+<td><p>8</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="function-of-components">
+<h2>Function of Components<a class="headerlink" href="#function-of-components" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>LED</p>
+<ul>
+<li><p>LSA consists of Four LED and PhotoDiode Pairs. The specific LED’s emit white light which is incident on the surface and some of it is absorbed by the surface. The voltage source For the LEDs to glow is VCC.</p></li>
+</ul>
+</li>
+<li><p>PhotoDiode</p>
+<ul>
+<li><p>Based upon the reflectivity coefficient of the surface( generally less than 1), the remaining light reflected from the surface is captured by the Photodiodes. LEDs and complimentary photodiodes are used to efficiently detect the surface (white/black line) as the environment also contains unwanted light for the LSA sensor. The amount of light received is directly proportional to the current generated by it. More the light, more the current, more the reading.</p></li>
+</ul>
+</li>
+<li><p>IC LM324</p>
+<ul>
+<li><p>This is a Quad(4) OP.Amp. IC. Op.Amp i.e Operation Amplifiers amplify the current with constant volatge. Since the current reading from photo diodes is significantly small and difficult to compare, it needs to be amplified. The 4 amplified outputs serve as raw readings of LSA.</p></li>
+</ul>
+</li>
+<li><p>Resistors</p>
+<ul>
+<li><p>Now to limit the current and thus to protect the LEDs, PhotoDiodes current limiting resistors are used.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="working-principle">
+<h2>Working Principle<a class="headerlink" href="#working-principle" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>LSA works on the principle of reflectivity of light for different types of surfaces.</p>
+<ul>
+<li><p>Black Surface -&gt; HIGH absorptivity -&gt; LESS reflectivity</p></li>
+<li><p>White Surface -&gt; LOW absorptivity -&gt; HIGH reflectivity</p></li>
+</ul>
+</li>
+<li><p>Demonstration
+<img src="assets/lsa_reflectivity.gif" width="650" height="600"></p></li>
+</ul>
+</section>
+<section id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Application of LSA majorly lies in line following.</p></li>
+</ul>
+</section>
+<section id="scope-of-improvement">
+<h2>Scope of Improvement<a class="headerlink" href="#scope-of-improvement" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>LSA sometimes provides slightly inaccurate readings due to external light and conditions. Therefore, LSA has low accuracy. Hence LSA should be kept close to the ground.</p></li>
+<li><p>As of now only white and black surfaces are being mapped. Given accurate sensors and proper mapping we can map LSA for any range of RGB colours.</p></li>
+</ul>
+</section>
+<section id="description-of-functions-used">
+<h2>Description of Functions Used<a class="headerlink" href="#description-of-functions-used" title="Link to this heading"></a></h2>
+<ul>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">enable_line_sensor</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span><span class="w">	</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Enables and Configures the adc(Analog to Digital Converter).	.</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+<p><strong>Returns</strong> : esp_err_t returns ESP_OK if adc is initialised properly, else it returns ESP_ERR_INVALID_ARG</p>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">bound</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">min</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">max</span><span class="p">)</span><span class="w">	</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Bounds the given val within the range [min, max].</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code> : the value which needs to be bounded in the range [min, max].</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code> : the minimium limit value of the bounding range.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max</span></code> : the maximum limit value of the bounding range.</p></li>
+</ul>
+<p><strong>Returns</strong> : the bounded value of val within the bounding range.</p>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">float</span><span class="w"> </span><span class="n">map</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">input_lower_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">input_higher_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">output_lower_limit</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">output_higher_limit</span><span class="p">)</span><span class="w">	</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Maps the range [input_lower_limit, input_higher_limit] to  the range [output_lower_limit, output_higher_limit].</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">val</span></code> : the value which needs to be mapped.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_lower_limit</span></code> : the minimium limit value of the input mapping range.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">input_lower_limit</span></code> : the maximum limit value of the input mapping range.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_lower_limit</span></code> : the minimium limit value of the output mapping range.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_lower_limit</span></code> : the maximum limit value of the output mapping range.</p></li>
+</ul>
+<p><strong>Returns</strong> : the mapped value of val lying within the output mapping range.</p>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">vTaskDelay</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xTicksToDelay</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Delay a task for a given number of ticks.The constant portTICK_PERIOD_MS can be used to calculate real time from the tick rate - with the     resolution of one tick period.</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xTicksToDelay</span></code> : The amount of time, in tick periods, that the calling task should block.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

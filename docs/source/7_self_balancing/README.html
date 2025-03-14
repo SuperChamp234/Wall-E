@@ -1,0 +1,260 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SELF BALANCING &mdash; Wall-E Docs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Wall-E Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">SELF BALANCING</a><ul>
+<li><a class="reference internal" href="#table-of-contents">TABLE OF CONTENTS</a></li>
+<li><a class="reference internal" href="#how-bot-balance-itself">How bot balance itself?</a><ul>
+<li><a class="reference internal" href="#theory">Theory</a></li>
+<li><a class="reference internal" href="#use-of-pid">Use of PID</a></li>
+<li><a class="reference internal" href="#proportional-term">Proportional Term</a></li>
+<li><a class="reference internal" href="#derivative-term">Derivative Term</a></li>
+<li><a class="reference internal" href="#integral-term">Integral Term</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#formula-for-calculation-of-pitch-correction">Formula for calculation of pitch correction</a></li>
+<li><a class="reference internal" href="#algorithm">ALGORITHM</a></li>
+<li><a class="reference internal" href="#description-of-the-functions">Description of the functions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Wall-E Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SELF BALANCING</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/source/7_self_balancing/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="self-balancing">
+<h1>SELF BALANCING<a class="headerlink" href="#self-balancing" title="Link to this heading"></a></h1>
+<section id="table-of-contents">
+<h2>TABLE OF CONTENTS<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#How-bot-balance-itself?"><span class="xref myst">How bot balances itself?</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#theory"><span class="xref myst">Theory</span></a></p></li>
+<li><p><a class="reference internal" href="#Use-of-pid"><span class="xref myst">Use of PID</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#proportional-term"><span class="xref myst">Proportional Term</span></a></p></li>
+<li><p><a class="reference internal" href="#derivative-term"><span class="xref myst">Derivative Term</span></a></p></li>
+<li><p><a class="reference internal" href="#integral-term"><span class="xref myst">Intergral Term</span></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#formula-for-calculation-of-pitch-correction"><span class="xref myst">Formula for calucation of pitch-correction</span></a></p></li>
+<li><p><a class="reference internal" href="#algorithm"><span class="xref myst">Algorithm</span></a></p></li>
+<li><p><a class="reference internal" href="#Description-of-the-functions"><span class="xref myst">Description of the Functions</span></a></p></li>
+</ul>
+</section>
+<section id="how-bot-balance-itself">
+<h2>How bot balance itself?<a class="headerlink" href="#how-bot-balance-itself" title="Link to this heading"></a></h2>
+<section id="theory">
+<h3>Theory<a class="headerlink" href="#theory" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Suppose that the bot is initially stationary. If it <strong>moves forward</strong> the <strong>front of the bot goes upwards</strong> and vice versa for when we move the bot backwards.</p></li>
+<li><p>Likewise, if the bot is <strong>above its desired position</strong> we can <strong>move the bot backwards</strong> to bring the bot to desired position.</p></li>
+<li><p>And if <strong>bot is below its desired position</strong> we can <strong>move the bot forward</strong> to bring the bot to desired position.</p></li>
+<li><p>This way we can decide the direction the bot moves in i.e. forwards or backwards in order to maintain its balance.</p></li>
+</ul>
+<p><img alt="" src="https://miro.medium.com/max/3200/0*N-jU3hUGtPsgB_tn" /></p>
+</section>
+<section id="use-of-pid">
+<h3>Use of PID<a class="headerlink" href="#use-of-pid" title="Link to this heading"></a></h3>
+<p>PID stands for <strong>P</strong>roportional-<strong>I</strong>ntegral-<strong>D</strong>erivative</p>
+<p><img alt="" src="https://osoyoo.com/wp-content/uploads/2018/08/pid.png" /></p>
+<ul class="simple">
+<li><p>The desired state is the position you want your robot to be in. In the case of the balancing robot, that would be straight up and down.</p></li>
+<li><p>The e(t) part is the error experienced.</p></li>
+<li><p>The Kp * e(t) part is the Proportional part.</p></li>
+<li><p>The Ki * integral e(t) part is the Integral part.</p></li>
+<li><p>The Kd * d/dt e(t) part is the Derivative part</p></li>
+<li><p>The + means they are all added together into a control signal that is passed on to the system. In our case the system is a self balancing robot. The control signal tells the  how fast ESP to move the motors in order to balance the robot.</p></li>
+<li><p>Finally the sensor (the MPU-6050 in our case) sends the new current position of the robot back to the ESP, which calculates the error and does the whole process again. This is called feedback, and makes this type of control loop a closed-loop system (as opposed to an open-loop system, which is easier but much less accurate).</p></li>
+</ul>
+</section>
+<section id="proportional-term">
+<h3>Proportional Term<a class="headerlink" href="#proportional-term" title="Link to this heading"></a></h3>
+<p>The proportional term (gain) makes a change to the output that is proportional to the current error value.</p>
+<ul class="simple">
+<li><p>Now correction_speed = Kp * Error (Here Kp is the proportionality constant)</p></li>
+<li><p>If Kp is Too Low , Say Kp = 0.05 , now for Error = 5 the correction_speed=0.25 which is insignificant for our motors</p></li>
+<li><p>If Kp is too high , Say Kp = 10 , now for Error = 5, then correction_speed = 50 , which is marginally high for such small error. Hence, the bot will overshoot and pass through the 0 degree mark and towards the negative side .</p></li>
+</ul>
+<p><img alt="" src="https://osoyoo.com/wp-content/uploads/2018/08/kp1.png" /></p>
+</section>
+<section id="derivative-term">
+<h3>Derivative Term<a class="headerlink" href="#derivative-term" title="Link to this heading"></a></h3>
+<p>The derivative term slows the rate of change of the controller output, most notably near the controller set value.The Kd term helps the Kp term not overshoot the mark and reduces oscillations. Too large of a Kd term will slow down the response of the robot and make it slower to balance, while too small of a Kd term will make it shake a lot.</p>
+<ul class="simple">
+<li><p>If you try to Balance the Bot using just the
+Proportional Term ,by providing proper ‘Kp’ value The
+bot will balance but will oscillate near the Origin. We
+need to dampen these oscillations , we introduce a
+new term known as the Derivative Term.</p></li>
+<li><p>Correction_Speed = Kp * Error + Kd *Error_Rate</p></li>
+<li><p>Error_Rate= (Current_Error - Previous_Error)/dt</p></li>
+<li><p>Suppose we have Kp such that error changes from
+100 to 50 in one second , Now for this particular
+Instant, the Error_Rate = -50 ,Correction_Rate =
+Kp<em>50 + Kd</em>(-50) —– (A)</p></li>
+</ul>
+<p><img alt="" src="https://s3.amazonaws.com/embeddedrelated/user/1/pid_fig14_95431.png" /></p>
+</section>
+<section id="integral-term">
+<h3>Integral Term<a class="headerlink" href="#integral-term" title="Link to this heading"></a></h3>
+<p>The Integral term is proportional to the amount of time the error is present. The integral term accelerates the movement of the process towards the set value and eliminates any residual steady-state error that occurs with a proportional only controller.</p>
+<ul class="simple">
+<li><p>For example, if the MPU should read 181 degrees to be balanced, but reads 181.1, that might not be enough to move the motors enough to correct for that 0.1 difference. But if the MPU reads that value 100 times in a second, the extra 0.1 degree becomes 10 degrees of cumulative error, and that IS enough to move the motors.</p></li>
+<li><p>Once the bot reaches the target, it will drift towards the other side because the cumulative error has already been built up once it passes to the other side, the error will add up with opposite sign and slowly decrease the cumulative error stabilizing the bot back to the target point.</p></li>
+<li><p>This can have negative consequences if the Ki error is too large though, as shown here:</p></li>
+</ul>
+<p><img alt="" src="https://osoyoo.com/wp-content/uploads/2018/08/ki1.png" /></p>
+</section>
+</section>
+<section id="formula-for-calculation-of-pitch-correction">
+<h2>Formula for calculation of pitch correction<a class="headerlink" href="#formula-for-calculation-of-pitch-correction" title="Link to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pitch_correction</span> <span class="o">=</span> <span class="n">Kp</span><span class="o">*</span><span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ki</span><span class="o">*</span><span class="p">(</span><span class="n">Integral_Error</span><span class="p">)</span> <span class="o">+</span> <span class="n">Kd</span><span class="o">*</span><span class="p">(</span><span class="n">Error_rate</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Proportional Term = kp*(Error)</p>
+<p>Derivative Term = kd*(Error_rate)</p>
+<p>Integral Term = ki*(Integral_Error)</p>
+</section>
+<section id="algorithm">
+<h2>ALGORITHM<a class="headerlink" href="#algorithm" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Reading data from sensors and Calculate Error.</p></li>
+<li><p>Calculate “Error Rate” and “Cumulative Error(Integral)” Terms.</p></li>
+<li><p>Calculate Correction Speed Using PID Equation.</p></li>
+<li><p>Threshold Correction Speed to MAX and MIN PWM.</p></li>
+<li><p>Direction in which bot should move:</p>
+<ol class="arabic simple">
+<li><p>If Error &gt; 1 (Bot-front is down) : bot_forward(pwm)</p></li>
+<li><p>If Error &lt;-1 (Bot-front is up) : bot_backward(pwm)</p></li>
+<li><p>else (bot is balanced) : bot_stop()</p></li>
+</ol>
+</li>
+<li><p>Go to Step 1.</p></li>
+</ol>
+</section>
+<section id="description-of-the-functions">
+<h2>Description of the functions<a class="headerlink" href="#description-of-the-functions" title="Link to this heading"></a></h2>
+<ul>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">calculate_motor_command</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">pitch_error</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">motor_cmd</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Calucate the motor inputs according to the angle of MPU</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pitch_error</span></code> : value of the error between desired angle and current angle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">motor_cmd</span></code> : Pointer to variable motor_cmd which will store the  calculated correction values</p></li>
+</ul>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">balance_task</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : The main task to balance the bot</p>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">read_mpu6050</span><span class="p">(</span><span class="n">euler_angle</span><span class="p">,</span><span class="w"> </span><span class="n">mpu_offset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : to read the mpu6050 and calucation of the complimentary pitch and roll angles</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">euler</span> <span class="pre">angle</span></code>: euler_angles are the complementary pitch and roll angles obtained from mpu6050</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mpu_offset</span></code> : mpu_offsets are the initial accelerometer angles at rest position</p></li>
+</ul>
+<p><strong>Return</strong> : returns ESP_OK if calculate angles correctly else return ESP_FAIL if any error occurs</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

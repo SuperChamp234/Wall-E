@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TABLE OF CONTENTS &mdash; Wall-E Docs  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Wall-E Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">TABLE OF CONTENTS</a></li>
+<li><a class="reference internal" href="#pulse-width-modulation">Pulse Width Modulation</a><ul>
+<li><a class="reference internal" href="#duty-cycle">Duty Cycle</a></li>
+<li><a class="reference internal" href="#period">Period</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pwm-voltage-regulation">PWM: Voltage Regulation</a></li>
+<li><a class="reference internal" href="#led-dimmer">LED Dimmer</a></li>
+<li><a class="reference internal" href="#pwm-for-controlling-speed">PWM – For controlling speed</a></li>
+<li><a class="reference internal" href="#motor-drivers">Motor Drivers</a></li>
+<li><a class="reference internal" href="#description-of-functions-used">Description Of Functions Used</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Wall-E Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">TABLE OF CONTENTS</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/docs/source/5_PWM/README.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-of-contents">
+<h1>TABLE OF CONTENTS<a class="headerlink" href="#table-of-contents" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="#pulse-width-modulation"><span class="xref myst">Pulse Width Modulation</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#duty-cycle"><span class="xref myst">Duty Cycle</span></a></p></li>
+<li><p><a class="reference internal" href="#period"><span class="xref myst">Period</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#led-dimmer"><span class="xref myst">Led Dimmer</span></a></p></li>
+<li><p><a class="reference internal" href="#*pwm-for-controlling-speed"><span class="xref myst">PWM – For controlling speed</span></a></p></li>
+<li><p><a class="reference internal" href="#motor-drivers"><span class="xref myst">Motor Drivers</span></a></p></li>
+<li><p><a class="reference internal" href="#description-of-functions-used"><span class="xref myst">Description Of Functions Used</span></a></p></li>
+</ul>
+</section>
+<section id="pulse-width-modulation">
+<h1>Pulse Width Modulation<a class="headerlink" href="#pulse-width-modulation" title="Link to this heading"></a></h1>
+<p>Pulse Width Modulation (PWM) is a square wave with varying low and high amplitude signal. A general PWM signal is given in a figure below:</p>
+<p><img alt="" src="https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller1.png" /></p>
+<p>There are various terms related with the Pulse Width Modulation:-</p>
+<ul class="simple">
+<li><p><strong>Off-Time</strong> :- Duration of time period when the signal is low.</p></li>
+<li><p><strong>ON-Time</strong>  :- Duration of time period when the signal is high.</p></li>
+<li><p><strong>Duty cycle</strong> :- It is the percentage of the time period when the signal remains ON during the period of the pulse width modulation signal.</p></li>
+<li><p><strong>Period</strong> :- It is the sum of off-time and on-time of pulse width modulation signal.</p></li>
+</ul>
+<section id="duty-cycle">
+<h2>Duty Cycle<a class="headerlink" href="#duty-cycle" title="Link to this heading"></a></h2>
+<p>Calculation of duty cycle is done by calculating the ON-time from total period of time. It is a ratio between ON-time and total time period of the signal using period calculation, duty cycle is calculated as shown in the equation below:</p>
+<p><img alt="" src="https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller2.png" /></p>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Duty_Cycle_Examples.png" /></p>
+</section>
+<section id="period">
+<h2>Period<a class="headerlink" href="#period" title="Link to this heading"></a></h2>
+<p>As represented in the above figure, Toff represents the off-time and Ton represents the on-time of a signal. Period is a sum of both on and off times and period is calculated as shown in the equation below:</p>
+<p><img alt="" src="https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller3.png" /></p>
+</section>
+</section>
+<section id="pwm-voltage-regulation">
+<h1>PWM: Voltage Regulation<a class="headerlink" href="#pwm-voltage-regulation" title="Link to this heading"></a></h1>
+<p>PWM signals when operates at different duty cycle it gives a varying voltage at the output. Voltage regulation method is used in various areas of application like:</p>
+<ul class="simple">
+<li><p>Audio</p></li>
+<li><p>LED dimmers</p></li>
+<li><p>Analog Signal Generation</p></li>
+<li><p>Switching regulators</p></li>
+<li><p>Motor Control</p></li>
+</ul>
+<p>Voltage regulation operation is performed by averaging the PWM signal. Output voltage is calculated as shown in the equation below:</p>
+<p><img alt="" src="https://www.javatpoint.com/embeddedsystem/images/pwm-avr-microcontroller4.png" /></p>
+</section>
+<section id="led-dimmer">
+<h1>LED Dimmer<a class="headerlink" href="#led-dimmer" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>LED Dimmer is the best example to visualise the working of the PWM</p></li>
+<li><p>PWM technique (pulse width modulation) is a very efficient way of controlling the brightness of LEDs with minimum energy waste. I</p></li>
+<li><p>Instead of varying the brightness by varying the supply current with a variable resistor or transistor it is accomplished by varying the ratio of ON time vs OFF time. This saves the lot of energy.</p></li>
+</ul>
+<p><img alt="" src="https://exploreembedded.com/wiki/images/5/54/0_LPC1768_PWM.gif" /></p>
+<p><img alt="" src="https://makeabilitylab.github.io/physcomp/esp32/assets/movies/Huzzah32_Fade-optimized.gif" /></p>
+</section>
+<section id="pwm-for-controlling-speed">
+<h1>PWM – For controlling speed<a class="headerlink" href="#pwm-for-controlling-speed" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>The speed of a DC motor can be controlled by varying its input voltage, i.e. by using PWM.The higher the duty cycle, the greater the average voltage being applied to the dc motor(High Speed) and the lower the duty cycle, the less the average voltage being applied to the dc motor(Low Speed).</p></li>
+<li><p>To control the speed of a d.c. motor we need a variable voltage d.c. power source. However if you take a 12v motor and switch on the power to it, the motor will start to speed up: motors do not respond immediately so it will take a small time to reach full speed. If we switch the power off sometime before the motor reaches full speed, then the motor will start to slow down. If we switch the power on and off quickly enough, the motor will run at some speed part way between zero and full speed. This is exactly what a p.w.m. controller does: it switches the motor on in a series of pulses. To control the motor speed it varies (modulates) the width of the pulses – hence Pulse Width Modulation.</p></li>
+</ul>
+</section>
+<section id="motor-drivers">
+<h1>Motor Drivers<a class="headerlink" href="#motor-drivers" title="Link to this heading"></a></h1>
+<p>Motor drivers acts as an interface between the motors and the control circuits. Motor require high amount of current whereas the controller circuit works on low current signals. So the function of motor drivers is to take a low-current control signal and then turn it into a higher-current signal that can drive a motor.</p>
+<p>The motor driver we will use in this workshop is TB6612FNG Motor driver</p>
+</section>
+<section id="description-of-functions-used">
+<h1>Description Of Functions Used<a class="headerlink" href="#description-of-functions-used" title="Link to this heading"></a></h1>
+<ul>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">enable_motor_driver_a</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span><span class="w">	</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Enables Motor driver A in Parallel or Normal Mode.</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> : if mode = 1 is passed, motor driver is operated in parallel mode, if mode = 2 is passed, motor driver is operated in normal mode</p></li>
+</ul>
+<p><strong>Returns</strong> : esp_err_t returns ESP_OK if motor driver initialised properly, else it returns ESP_ERR_INVALID_ARG</p>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">enable_motor_driver_b</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span><span class="w">	</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Enables Motor driver B in Parallel or Normal Mode.</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mode</span></code> : if mode = 1 is passed, motor driver is operated in parallel mode, if mode = 2 is passed, motor driver is operated in normal mode</p></li>
+</ul>
+<p><strong>Returns</strong> : esp_err_t returns ESP_OK if motor driver initialised properly, else it returns ESP_ERR_INVALID_ARG</p>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">esp_err_t</span><span class="w"> </span><span class="n">set_motor_speed</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> 	</span><span class="n">motor_id</span><span class="p">,</span>
+<span class="w">                             </span><span class="kt">int</span><span class="w"> 	</span><span class="n">direction</span><span class="p">,</span>
+<span class="w">                             </span><span class="kt">float</span><span class="w"> </span><span class="n">duty_cycle</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Set the speed of motors.</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">motor_id</span></code> : set it as MOTOR_A_0, MOTOR_A_1, MOTOR_B_0, MOTOR_B_1 to select the appropriate motor to set its speed and direction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">direction</span></code> : set is as MOTOR_FORWARD for forward motion, MOTOR_BACKWARD for backward motion, MOTOR_STOP to stop the motor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">duty_cycle</span></code> : set the duty cycle of the motor driver PWM</p></li>
+</ul>
+<p><strong>Returns</strong> : esp_err_t returns ESP_OK if speed correctly, ESP_FAIL if any error occurs</p>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="n">vTaskDelay</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">TickType_t</span><span class="w"> </span><span class="n">xTicksToDelay</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Delay a task for a given number of ticks.The constant portTICK_PERIOD_MS can be used to calculate real time from the tick rate - with the resolution of one tick period.</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xTicksToDelay</span></code> : The amount of time, in tick periods, that the calling task should block.</p></li>
+</ul>
+</li>
+<li><div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="n">BaseType_t</span><span class="w"> </span><span class="n">xTaskCreate</span><span class="p">(</span><span class="n">TaskFunction_t</span><span class="w"> </span><span class="n">pvTaskCode</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">constpcName</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">usStackDepth</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">constpvParameters</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                </span><span class="n">UBaseType_t</span><span class="w"> </span><span class="n">uxPriority</span><span class="p">,</span><span class="w"> </span>
+<span class="w">                                </span><span class="n">TaskHandle_t</span><span class="w"> </span><span class="o">*</span><span class="n">constpvCreatedTask</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Description</strong> : Create a new task and add it to the list of tasks that are ready to run.</p>
+<p><strong>Parameters</strong> :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pvTaskCode</span></code>: Pointer to the task entry function. Tasks must be implemented to never return (i.e. continuous loop), or should be terminated using vTaskDelete function.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pcName</span></code>: A descriptive name for the task. This is mainly used to facilitate debugging. Max length defined by configMAX_TASK_NAME_LEN - default is 16.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usStackDepth</span></code> : The size of the task stack specified as the number of bytes. Note that this differs from vanilla FreeRTOS.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvParameters</span></code>: Pointer that will be used as the parameter for the task being created.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uxPriority</span></code> : The priority at which the task should run. Systems that include MPU support can optionally create tasks in a privileged (system) mode by setting bit portPRIVILEGE_BIT of the priority parameter. For example, to create a privileged task at priority 2 the uxPriority parameter should be set to ( 2 | portPRIVILEGE_BIT ).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pvCreatedTask</span></code>: Used to pass back a handle by which the created task can be referenced.</p></li>
+</ul>
+<p><strong>Returns</strong> : pdPASS if the task was successfully created and added to a ready list, otherwise an error code defined in the file projdefs.h</p>
+</li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
