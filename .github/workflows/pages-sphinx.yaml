@@ -3,7 +3,7 @@ name: Build and Deploy Docs
 on:
   push:
     branches:
-      - ** # Change to default branch later
+      - '**' # Change to default branch later
   workflow_dispatch:
 
 permissions:
