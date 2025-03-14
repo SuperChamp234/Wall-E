@@ -1,3 +1,7 @@
+---
+title: MPU6050
+---
+
 # TABLE OF CONTENTS
 - [TABLE OF CONTENTS](#table-of-contents)
 - [MPU6050](#mpu6050)
@@ -10,8 +14,8 @@
   - [Reading Gyroscope Data](#reading-gyroscope-data)
   - [Complementary Filter](#complementary-filter)
   - [Reading Register Data](#reading-register-data)
-- [Description of Functions Used](#description-of-functions-used)
-- [Flowchart of Code](#flowchart-of-code)
+  - [Description of Functions Used](#description-of-functions-used)
+  - [Flowchart of Code](#flowchart-of-code)
 
 
 

@@ -1,17 +1,19 @@
+---
+title: LSA - Light Sensor Array
+---
+
 ## LSA - Light Sensor Array
 
 ### Table of Contents
-* [Overview](#overview)
-* [Components of LSA](#components-of-lsa)
-* [Function of Components](#function-of-components)
-	* [LED](#function-of-components)
-	* [PhotoDiode](#function-of-components)
-	* [IC LM324](#function-of-components)
-	* [Resistors](#function-of-components)
-* [Working Principle](#working-principle)
-* [Appplications](#applications)
-* [Scope of Improvement](#scope-of-improvement)
-* [Description of Functions Used](#description-of-functions-used)
+- [LSA - Light Sensor Array](#lsa---light-sensor-array)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Components of LSA](#components-of-lsa)
+  - [Function of Components](#function-of-components)
+  - [Working Principle](#working-principle)
+  - [Applications](#applications)
+  - [Scope of Improvement](#scope-of-improvement)
+  - [Description of Functions Used](#description-of-functions-used)
 
 ### Overview 
 - The Light Sensor Array(LSA) is used to detect the white/black lined surface and it sends this data to the microcontroller ESP32. Thus, the purpose of line following is achieved.
