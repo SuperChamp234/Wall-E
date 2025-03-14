@@ -3,7 +3,8 @@ name: Build and Deploy Docs
 on:
   push:
     branches:
-      - '**'  # Change this if your default branch is different
+      - main  # Change this if your default branch is different
+      - "*"    # Run on all branches for testing purposes
   workflow_dispatch:
 
 permissions:
@@ -31,6 +32,20 @@ jobs:
           find . -name "README.md" -exec cp --parents {} docs/source/ \;
           mv docs/source/README.md docs/source/index.md  # Root README becomes index
 
+      - name: Create Dynamic Toctree for Sidebar
+        run: |
+          echo "Generating toctree dynamically..."
+          echo '```{toctree}' > docs/source/_auto_toctree.md
+          echo ':maxdepth: 2' >> docs/source/_auto_toctree.md
+          echo ':caption: Contents' >> docs/source/_auto_toctree.md
+          echo '' >> docs/source/_auto_toctree.md
+          find docs/source -name "README.md" | grep -v index.md | while read path; do
+            relpath=$(realpath --relative-to=docs/source "$path")
+            echo "${relpath%.md}" >> docs/source/_auto_toctree.md
+          done
+          echo '```' >> docs/source/_auto_toctree.md
+          cat docs/source/_auto_toctree.md >> docs/source/index.md
+
       - name: Create Sphinx Config
         run: |
           cat << EOF > docs/source/conf.py
@@ -54,4 +69,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/build/html
           keep_files: true  # Keeps CNAME if it exists
-          cname: 'walle.sravjti.in'  # Change if using a different domain
+          #cname: 'walle.sravjti.in'  # Change if using a different domain
